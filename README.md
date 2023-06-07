@@ -4,4 +4,4 @@
 
 **Aim**: This activity demonstrates how deepfake audio and video can be generated. 
 
-**Documentation**: For both activities, an Excel sheet is provided. Please document the source and target video/audio clips used, as well as the models used to genenrate the fakes. Do also let us know the filepath where you have saved the generated audio/videos. 
+**Documentation**: For both activities, an Excel sheet is provided. Please document the source and target video/audio clips used, as well as the models used to genenrate the fakes. Instructions on where to store the audio/video files downloaded and generated are in the Excel sheet. Do ask us if you have any questions.
