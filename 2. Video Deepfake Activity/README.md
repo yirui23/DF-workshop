@@ -2,6 +2,10 @@
 
 In this activity, you will make use of [Faceswap](https://github.com/deepfakes/faceswap) to generate the fakes. As this open source generator requires time and effort to train the model to perform the swap, we've provided you with a pretained model for 2 Singapore Ministers - Lawrence Wong and Chan Chun Sing. You can use this to generate as many videos as you want.
 
+<ins>Some quick terminologies:</ins>
+- Source: Original video of the person that you want to replace. In this case, source = Chan Chun Sing.
+- Target: The person whose face you want to put into the source video. In this case, target = Lawrence Wong.
+
 <ins>How to generate your videos:</ins>
 
 **1) Installing repository and libraries/dependencies:**
