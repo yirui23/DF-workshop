@@ -1,6 +1,6 @@
 # 1. Audio Deepfake Generation Activity 
 
-_How to generate your audio clips:_
+<ins>How to generate your audio clips:</ins>
 
 **1) Download videos from YouTube**
 - Clone YouTube Download script from [here](https://github.com/ongsici/YT-AV-Downloader)
@@ -22,3 +22,9 @@ _How to generate your audio clips:_
 ![alt text](https://github.com/ongsici/DF-workshop/blob/main/1.%20Audio%20Deepfake%20Activity/images/Speech%20Synthesis.png?raw=true)
 
 - Download each clip and store it in the respective folders 
+
+
+<ins>Additional Task (if time permits):</ins>
+- If there is time, can check out [sovits svc](https://github.com/voicepaw/so-vits-svc-fork) where you can clone your own voice and make it sing using your own voice. 
+- If your have issue installing the requirements for the environment you can use the free plan of [Google Colab](https://colab.research.google.com/github/34j/so-vits-svc-fork/blob/main/notebooks/so-vits-svc-fork-4.0.ipynb)
+- You can also check out this [link](https://www.youtube.com/watch?v=xgvT7UnUTng&ab_channel=JarodsJourney) for the guide on how to use the google colab. 
