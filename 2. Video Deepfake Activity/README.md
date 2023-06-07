@@ -1,10 +1,17 @@
 # 2. Video Deepfake Generation Activity
 
-In this activity, you will make use of [Faceswap](https://github.com/deepfakes/faceswap) to generate the fakes. As this open source generator requires time and effort to train the model to perform the swap, we've provided you with a pretained model for 2 Singapore Ministers - Lawrence Wong and Chan Chun Sing. You can use this to generate as many videos as you want.
+In this activity, you will make use of [Faceswap](https://github.com/deepfakes/faceswap) to generate the fakes. As this open source generator requires time and effort to train the model to perform the swap, we've provided you with a pretained model for a few combinations for Singapore Ministers (see below). You can use this to generate as many videos as you want.
 
 <ins>Some quick terminologies:</ins>
-- Source: Original video of the person that you want to replace. In this case, source = Chan Chun Sing.
-- Target: The person whose face you want to put into the source video. In this case, target = Lawrence Wong.
+- Source: Original video of the person that you want to replace. 
+- Target: The person whose face you want to put into the source video. 
+
+| Source | Target | Model Name |
+| ------------- | ------------- | ------------- |
+| Chan Chun Sing | Lawrence Wong | CCS-LW-2_snapshot_975000_iters |
+| Sun Xue Ling | Josephine Teo | sun_joteo_snapshot_375000_iters | 
+| Sun Xue Ling | Indranee | sun_indranee_snapshot_275000_iters | 
+| Sun Xue Ling | Low Yen Ling | sun_low_snapshot_350000_iters |
 
 <ins>How to generate your videos:</ins>
 
@@ -17,9 +24,9 @@ In this activity, you will make use of [Faceswap](https://github.com/deepfakes/f
 - Download pretrained models from [One Drive](https://hometeamsnt-my.sharepoint.com/:f:/g/personal/ong_si_ci_hometeamsnt_onmicrosoft_com/EsvdDbQwdCREoL-Bx2YCFSEBrDZ5b_FK4-ayU6wwE9tNbw?e=hT18dO). Create a folder called "model" within the cloned faceswap folder and put the downloaded pretrained models inside. Unzip the downloaded models.
 
 **2) Download videos from YouTube for swap**
-- Use the YouTube Downloader script that you have cloned in Activity 1 to download videos of DPM Lawrence Wong and Min Chan Chun Sing by preparing the youtube links, start/end times of video in a txt file.
+- Use the YouTube Downloader script that you have cloned in Activity 1 to download videos of source and target individuals by preparing the youtube links, start/end times of video in a txt file. 
 - Videos that you use in the generation phase should only consist of their face in the frame, as Faceswap can only perform the swap on 1 person's face in every frame. If your video contains other individuals in the scene, you may use video cropping tools (e.g. Clideo) to crop the video to contain only that 1 individual. This should be done after you have used the script above to download the video.
-- NOTE: Ensure that your _source_ video clips (Chan Chun Sing) used are **less than** 30s. Otherwise the facial alignments generation will take too long. 
+- NOTE: Ensure that your _source_ video clips (Chan Chun Sing / Sun Xue Ling) used are **less than** 30s. Otherwise the facial alignments generation will take too long. 
 
 **3) Generate your own swap** 
 
@@ -32,7 +39,7 @@ Before you can perform the face swap, you will first need to generate an _alignm
 
 | Parameter  | Option to select | Example |
 | ------------- | ------------- | ------------- |
-| Input Dir  | Select "Video" option. Choose the _source_ video (Chan Chun Sing) that you would like to generate the alignment for | CCS-1.mp4 |
+| Input Dir  | Select "Video" option. Choose the _source_ video (Chan Chun Sing / Sun Xue Ling) that you would like to generate the alignment for | CCS-1.mp4 |
 | Output Dir | Select the output folder where you would like to store the faces. Suggest to create a separate folder called "_faces_" and store them in subfolders. | faceswap/faces/CCS-1 |
 
 - Leave the alignments field empty. For other fields, leave it as default. 
@@ -45,10 +52,10 @@ Once the alignment files have been generated, perform the following:
 
 | Parameter  | Option to select | Example |
 | ------------- | ------------- | ------------- |
-| Input Dir  | Select "Video" option. Choose the _source_ video (Chan Chun Sing) that you would like to use.  | CCS-1.mp4 |
+| Input Dir  | Select "Video" option. Choose the _source_ video (Chan Chun Sing / Sun Xue Ling) that you would like to use.  | CCS-1.mp4 |
 | Output Dir | Selected the sub-folder you have created in the "_Converted_" folder for the respective iteration of generation.  | faceswap/converted/CCS-LW-2-1 |
 | Alignments | Select the _alignments.fsa_ file that corresponds to the video selected in "Input Dir" option. | CCS-1_alignments.fsa |
-| Reference Video | Select the _target_ video (Lawrence Wong) that you would like to use. | LW-1.mp4 |
+| Reference Video | Select the _target_ video (Lawrence Wong etc.) that you would like to use. | LW-1.mp4 |
 | Model Dir | Select the model folder that you like to use | CCS-LW-2_snapshot_975000_iters OR CCS-LW-3_snapshot_600000_iters |
  - You may play around with the Plugin Options for Color Adjustment and Mask Type. Please select opencv as writer and leave other settings as default. 
  - Once ready, click "Convert" and wait for a few minutes for your swap to be generated. They will be generated as images in your selected Output Dir.
