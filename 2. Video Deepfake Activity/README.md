@@ -22,7 +22,7 @@ In this activity, you will make use of [Faceswap](https://github.com/deepfakes/f
 
 **3) Generate your own swap**
 - Create a folder "converted" within your faceswap folder. Within "converted" folder, create sub-folders for each video that you are generating, using the following naming convention: "CCS-LW-X-Y" where X=2 or 3, depending on the pretrained model that you use, and Y=1,2,3, etc. The value of Y should correspond to the number that you record /document in the Excel sheet. 
-- Open the faceswap GUI using the following:
+- Open the faceswap GUI using the following:\
 <code>cd faceswap
   python faceswap.py gui</code>
 - If this is the first time you are running the above, in the terminal, you will be asked to select the backend. Choose "NVIDIA" option. 
