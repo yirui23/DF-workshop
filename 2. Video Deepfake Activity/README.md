@@ -42,11 +42,11 @@ In this activity, you will make use of [Faceswap](https://github.com/deepfakes/f
 - Extract the audio file from the video file you selected in Input Dir using the following code.\
 <code>ffmpeg -i [input video filepath] -vn -acodec copy [output audio filename/path]</code> \
   Example (run from faceswap folder):\
-  <code> ffmpeg -i ./ChanChunSing/CCS-1.mp4 -vn -acodec copy ./ChanChunSing/CCS-1.aac</code> \
+  <code> ffmpeg -i ./ChanChunSing/CCS-1.mp4 -vn -acodec copy ./ChanChunSing/CCS-1.aac</code> 
 - Combined the generated frames from (3) into a video using the following code. Run this code in the Output Dir folder that you have selected in (3) \
   <code> ffmpeg -framerate [frame rate of original video] -pattern_type glob -i '\*.png' -c:v libx264 -pix_fmt yuv420p [output video name] </code>\
     Example: \
-  <code> ffmpeg -framerate 30 -pattern_type glob -i '\*.png' -c:v libx264 -pix_fmt yuv420p CCS-LW-2-1-video.mp4 </code>\
+  <code> ffmpeg -framerate 30 -pattern_type glob -i '\*.png' -c:v libx264 -pix_fmt yuv420p CCS-LW-2-1-video.mp4 </code>
 - Combine the extracted audio and generated video together using the following code. Run this in the main faceswap folder. \
     <code>ffmpeg -i [video filepath] -i [audio filepath] -c:v copy -c:a aac [output video name] </code> \
     Example: \
