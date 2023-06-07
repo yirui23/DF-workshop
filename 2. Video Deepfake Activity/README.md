@@ -22,3 +22,32 @@ In this activity, you will make use of [Faceswap](https://github.com/deepfakes/f
 
 **3) Generate your own swap**
 - Create a folder "converted" within your faceswap folder. Within "converted" folder, create sub-folders for each video that you are generating, using the following naming convention: "CCS-LW-X-Y" where X=2 or 3, depending on the pretrained model that you use, and Y=1,2,3, etc. The value of Y should correspond to the number that you record /document in the Excel sheet. 
+- Open the faceswap GUI using the following:
+<code>cd faceswap
+  python faceswap.py gui</code>
+- If this is the first time you are running the above, in the terminal, you will be asked to select the backend. Choose "NVIDIA" option. 
+- Make the following selections: 
+
+| Parameter  | Option to select | Example |
+| ------------- | ------------- | ------------- |
+| Input Dir  | Select "Video" option. Choose the _source_ video (Chan Chun Sing) that you would like to use.  | CCS-1.mp4 |
+| Output Dir | Selected the sub-folder you have created in the "_Converted_" folder for the respective iteration of generation.  | faceswap/converted/CCS-LW-2-1 |
+| Alignments | Select the _alignments.fsa_ file that corresponds to the video selected in "Input Dir" option. | CCS-1_alignments.fsa |
+| Reference Video | Select the _target_ video (Lawrence Wong) that you would like to use. | LW-1.mp4 |
+| Model Dir | Select the model folder that you like to use | CCS-LW-2_snapshot_975000_iters OR CCS-LW-3_snapshot_600000_iters |
+ - You may play around with the Plugin Options for Color Adjustment and Mask Type. Please select opencv as writer and leave other settings as default. 
+ - Once ready, click "Convert" and wait for a few minutes for your swap to be generated. They will be generated as images in your selected Output Dir.
+
+**4) Combining generated images into a video**
+- Extract the audio file from the video file you selected in Input Dir using the following code.\
+<code>ffmpeg -i [input video filepath] -vn -acodec copy [output audio filename/path]</code>
+  Example (run from faceswap folder):\
+  <code> ffmpeg -i ./ChanChunSing/CCS-1.mp4 -vn -acodec copy ./ChanChunSing/CCS-1.aac</code>
+- Combined the generated frames from (3) into a video using the following code. Run this code in the Output Dir folder that you have selected in (3) \
+  <code> ffmpeg -framerate [frame rate of original video] -pattern_type glob -i '\*.png' -c:v libx264 -pix_fmt yuv420p [output video name]
+    Example: \
+  <code> ffmpeg -framerate 30 -pattern_type glob -i '\*.png' -c:v libx264 -pix_fmt yuv420p CCS-LW-2-1-video.mp4 </code>
+- Combine the extracted audio and generated video together using the following code. Run this in the main faceswap folder. \
+    <code>ffmpeg -i [video filepath] -i [audio filepath] -c:v copy -c:a aac [output video name] </code>
+    Example: \
+    <code>ffmpeg -i ./converted/CCS-LW-2-1/CCS-LW-2-1-video.mp4 -i ./ChanChunSing/CCS-1.aac -c:v copy -c:a aac CCS-LW-2-1.mp4 </code>
